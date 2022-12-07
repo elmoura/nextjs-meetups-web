@@ -21,9 +21,5 @@ const DUMMY_MEETUPS = [
 ];
 
 export default function Home() {
-  return (
-    <Layout>
-      <MeetupList meetups={DUMMY_MEETUPS} />
-    </Layout>
-  );
+  return <MeetupList meetups={DUMMY_MEETUPS} />;
 }
