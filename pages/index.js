@@ -11,7 +11,7 @@ const DUMMY_MEETUPS = [
     description: "Sample description",
   },
   {
-    id: "m1",
+    id: "m2",
     title: "Prague Vuejs Meetup",
     image:
       "http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRtDk1qH7TEFjzO9UvReZt-FIGe4E3zOQKCDSS_gCOrEj1oVPytahfV2pW8rMeWUOuv",

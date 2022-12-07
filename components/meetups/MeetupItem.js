@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Card from "../ui/Card";
 import classes from "./MeetupItem.module.css";
 
-function MeetupItem({ id, image, title, title, address }) {
+function MeetupItem({ id, image, title, address }) {
   const router = useRouter();
 
   const showDetailsHandler = () => {
