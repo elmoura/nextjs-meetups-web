@@ -4,8 +4,10 @@ import { getMeetupsCollection } from "../utils/getMeetupsCollection";
 // Static Site Generation (SSG) approach
 // This function only runs during the build process
 export async function getStaticProps() {
-  const meetupsCollection = await getMeetupsCollection();
+  const { meetupsCollection, client } = await getMeetupsCollection();
   const meetups = await meetupsCollection.find().toArray();
+
+  client.close();
 
   return {
     // [required key] passes props to the page components

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import NewMeetupForm from "../components/meetups/NewMeetupForm";
+import NewMeetupForm from "../../components/meetups/NewMeetupForm";
 
 export default function NewMeetup() {
   const router = useRouter();

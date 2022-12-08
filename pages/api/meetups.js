@@ -15,7 +15,7 @@ const createMeetup = async (request, response) => {
 
     const { title, image, address, description } = data;
 
-    const meetupsCollection = await getMeetupsCollection();
+    const { meetupsCollection, client } = await getMeetupsCollection();
     const result = await meetupsCollection.insertOne({
       title,
       description,

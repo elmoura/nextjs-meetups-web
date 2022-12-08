@@ -6,7 +6,7 @@ function MeetupItem({ id, image, title, address }) {
   const router = useRouter();
 
   const showDetailsHandler = () => {
-    router.push(`/${id}`);
+    router.push(`/meetups/${id}`);
   };
 
   return (
