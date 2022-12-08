@@ -1,4 +1,3 @@
-import Layout from "../components/layout/Layout";
 import MeetupList from "../components/meetups/MeetupList";
 
 const DUMMY_MEETUPS = [
@@ -20,6 +19,20 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-export default function Home() {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+// Static Site Generation (SSG) approach
+// This function only runs during the build process
+export async function getStaticProps() {
+  // code that runs on a Node.js server
+  // fetch data from API, databases, filesystem, etc.
+
+  return {
+    // required key*
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+  };
+}
+
+export default function Home(props) {
+  return <MeetupList meetups={props.meetups} />;
 }
