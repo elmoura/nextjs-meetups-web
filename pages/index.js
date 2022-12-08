@@ -26,10 +26,13 @@ export async function getStaticProps() {
   // fetch data from API, databases, filesystem, etc.
 
   return {
-    // required key*
+    // [required key] passes props to the page components
     props: {
       meetups: DUMMY_MEETUPS,
     },
+    // [optional key] adds Incremental Static Generation (ISG), which updates
+    //    the data passed in props. The revalidation time is passed in seconds.
+    revalidate: 10,
   };
 }
 
