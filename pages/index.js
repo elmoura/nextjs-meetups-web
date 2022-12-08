@@ -36,6 +36,22 @@ export async function getStaticProps() {
   };
 }
 
+// Server side rendering (SSG) approach
+// Executes on every incoming request
+// export async function getServerSideProps(context) {
+//   // fetch data from API, databases or filesystems
+
+//   // you can use the req/res context
+//   const request = context.req;
+//   const response = context.res;
+
+//   return {
+//     props: {
+//       meetups: DUMMY_MEETUPS,
+//     },
+//   };
+// }
+
 export default function Home(props) {
   return <MeetupList meetups={props.meetups} />;
 }
