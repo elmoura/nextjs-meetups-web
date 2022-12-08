@@ -1,12 +1,10 @@
-import { MongoClient } from "mongodb";
 import MeetupList from "../components/meetups/MeetupList";
+import { getMeetupsCollection } from "../utils/getMeetupsCollection";
 
 // Static Site Generation (SSG) approach
 // This function only runs during the build process
 export async function getStaticProps() {
-  const client = await MongoClient.connect(process.env.MONGODB_URL);
-  const meetupsCollection = client.db().collection("meetups");
-
+  const meetupsCollection = await getMeetupsCollection();
   const meetups = await meetupsCollection.find().toArray();
 
   return {

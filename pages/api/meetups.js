@@ -1,6 +1,7 @@
 // Path: /api/meetup
 
 import { MongoClient } from "mongodb";
+import { getMeetupsCollection } from "../../utils/getMeetupsCollection";
 
 export default async function handler(request, response) {
   if (request.method === "POST") {
@@ -14,10 +15,7 @@ const createMeetup = async (request, response) => {
 
     const { title, image, address, description } = data;
 
-    const client = await MongoClient.connect(process.env.MONGODB_URL);
-    const db = await client.db();
-
-    const meetupsCollection = db.collection("meetups");
+    const meetupsCollection = await getMeetupsCollection();
     const result = await meetupsCollection.insertOne({
       title,
       description,
