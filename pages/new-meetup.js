@@ -1,8 +1,21 @@
+import { useRouter } from "next/router";
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
 export default function NewMeetup() {
-  const addMeetupHandler = (meetupData) => {
-    console.log(meetupData);
+  const router = useRouter();
+
+  const addMeetupHandler = async (meetupData) => {
+    const response = await fetch("/api/meetups", {
+      method: "POST",
+      body: JSON.stringify(meetupData),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    const data = await response.json();
+    console.log(data);
+
+    // This method makes sure that the user can't go back by clicking the back button in the browser
+    router.replace("/");
   };
 
   return <NewMeetupForm onAddMeetup={addMeetupHandler} />;
