@@ -28,7 +28,7 @@ export async function getStaticProps() {
   };
 }
 
-// Server side rendering (SSG) approach
+// Server side rendering (SSR) approach
 // Executes on every incoming request
 // export async function getServerSideProps(context) {
 //   // fetch data from API, databases or filesystems
