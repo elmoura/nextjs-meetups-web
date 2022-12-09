@@ -20,8 +20,8 @@ export async function getStaticPaths() {
         meetupId: meetup._id.toString(),
       },
     })),
-    // This indicates if the values inside the "paths" prop contemplates
-    // all the needed scenarios; If set to true or "blocking", Nextjs will try to generate dynamically
+    // This indicates if the values inside the "paths" prop contemplates all the needed scenarios;
+    // If set to true or "blocking", Nextjs will try to regenerate the static props dynamically
     // for the incoming unexpected values
     fallback: "blocking",
   };
