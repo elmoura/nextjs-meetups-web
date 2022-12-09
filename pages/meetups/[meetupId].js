@@ -21,9 +21,9 @@ export async function getStaticPaths() {
       },
     })),
     // This indicates if the values inside the "paths" prop contemplates
-    // all the needed scenarios; If set to true, Nextjs will try to generate dynamically
+    // all the needed scenarios; If set to true or "blocking", Nextjs will try to generate dynamically
     // for the incoming unexpected values
-    fallback: false,
+    fallback: "blocking",
   };
 }
 
