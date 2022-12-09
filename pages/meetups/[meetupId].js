@@ -1,3 +1,5 @@
+import Head from "next/head";
+import { Fragment } from "react";
 import { ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import { getMeetupsCollection } from "../../utils/getMeetupsCollection";
@@ -28,8 +30,6 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   const { meetupId } = context.params;
 
-  console.log({ meetupId });
-
   const { meetupsCollection, client } = await getMeetupsCollection();
   const meetup = await meetupsCollection.findOne({
     _id: new ObjectId(meetupId),
@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
   return {
     props: {
       meetup: {
-        id: meetup._id.toString,
+        id: meetup._id.toString(),
         title: meetup.title,
         description: meetup.description,
         image: meetup.image,
@@ -52,11 +52,17 @@ export async function getStaticProps(context) {
 
 export default function MeetupDetails(props) {
   return (
-    <MeetupDetail
-      title={props.meetup.title}
-      description={props.meetup.description}
-      image={props.meetup.image}
-      address={props.meetup.address}
-    />
+    <Fragment>
+      <Head>
+        <title>{props.meetup.title}</title>
+        <meta name="description" content={props.meetup.description} />
+      </Head>
+      <MeetupDetail
+        title={props.meetup.title}
+        description={props.meetup.description}
+        image={props.meetup.image}
+        address={props.meetup.address}
+      />
+    </Fragment>
   );
 }

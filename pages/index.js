@@ -1,3 +1,5 @@
+import Head from "next/head";
+import { Fragment } from "react";
 import MeetupList from "../components/meetups/MeetupList";
 import { getMeetupsCollection } from "../utils/getMeetupsCollection";
 
@@ -43,5 +45,16 @@ export async function getStaticProps() {
 // }
 
 export default function Home(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name="description"
+          content="Browse a huge list of highly active React meetups"
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 }
